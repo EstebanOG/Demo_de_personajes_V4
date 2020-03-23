@@ -40,8 +40,26 @@ public class Personaje implements ClonPersonaje{
     private int incyIzquierdaUno;
     private int incxIzquierdaDos;
     private int incyIzquierdaDos;
+    private int vida;
+    private int escudo;
 
     public Personaje() {
+    }
+
+    public int getVida() {
+        return vida;
+    }
+
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
+
+    public int getEscudo() {
+        return escudo;
+    }
+
+    public void setEscudo(int escudo) {
+        this.escudo = escudo;
     }
 
     public int getIncxArribaUno() {

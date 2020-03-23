@@ -2,9 +2,12 @@ package gui;
 
 import decorator.HumanoDecorator;
 import animacion.*;
+import chainOfResponsability.Verificar;
 import decorator.ElfoDecorator;
 import decorator.EnanoDecorator;
 import decorator.OrcoDecorator;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -16,11 +19,18 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import strategy.StrategyNormal;
+import strategy.StrategyDecorado;
+import strategy.Strategy;
 
 public class recreacion extends JPanel {
 
     static Personaje personaje;
+    public Verificar aumentoPorPocima = new Verificar();//Se crea un objeto de la clase Verificar la cual se encuentra ChainOfResponsability
+    Strategy clonarVida; // Objeto de la clase Strategy
     JFrame ventana = new JFrame();
+    Font fuenteVida = new Font("Calibri", 3, 16);// Fuente vida
+    Font fuenteEscudo = new Font("Calibri", 3, 16);// Fuente escudo
     static ArrayList<Personaje> personajetemp = new ArrayList<>();
     static ArrayList<Object> arreglo_personajes = new ArrayList<>();
     private final int AnchoVentana = 800;
@@ -47,9 +57,11 @@ public class recreacion extends JPanel {
     int i = 0;
     boolean colision = false;
     boolean colisionPocima = false;
-    Rectangle rect = new Rectangle(403,423,30,20);
-    Rectangle rectPj = new Rectangle(340,230,52,80);
+    Rectangle rect = new Rectangle(403, 423, 30, 20);
+    Rectangle rectPj = new Rectangle(340, 230, 52, 80);
+
     boolean entra = true;
+
     public recreacion() {
 
         fondo = h.getImage(this.getClass().getResource("/assets/map.png"));
@@ -150,11 +162,32 @@ public class recreacion extends JPanel {
                                 break;
                         }
                         ataca = true;
-                        Incremento = Incremento + 6;
-                        if (Incremento > 6) {
+                        Incremento = Incremento + 5;
+                        if (Incremento > 5) {
                             Incremento = 0;
                         }
                         break;
+                    case KeyEvent.VK_Q:
+                        //personajetemp.clear();
+                        for (i = 0; i < arreglo_personajes.size(); i++) {
+                            personajetemp.add((Personaje) arreglo_personajes.get(i));
+                            if (arreglo_personajes.size() < 2) {//Se clona el personaje, máximo un clon
+                                /*Se utiliza Strategy para evaluar la vida que se le baja a ambos personajes*/
+                                /*Si está decorado se le baja 20 de vida al clonar*/
+                                /*Si está normal se le baja 40 de vida al clonar*/
+                                if (entra == true) {
+                                    clonarVida = new StrategyNormal(personajetemp.get(i));
+                                    clonarVida.vidaEscudo();
+                                } else {
+                                    clonarVida = new StrategyDecorado(personajetemp.get(i));
+                                    clonarVida.vidaEscudo();
+                                }
+                                Personaje personajeClonUno = (Personaje) personajetemp.get(i).clonar();
+                                arreglo_personajes.add(personajeClonUno);
+                            }
+                        }
+                        break;
+
                 }
             }
         });
@@ -173,10 +206,10 @@ public class recreacion extends JPanel {
         if(colisionPocima == false){
             g2d.drawImage(pocion, 390, 400, 60, 60, this);
         }
-        if (poblacion.equals("Individual")) {
+        if (1 == arreglo_personajes.size()) {
             aumentoSpriteY = 0;
         } else {
-            aumentoSpriteY = 80;
+            aumentoSpriteY = 110;
         }
         for (i = 0; i < arreglo_personajes.size(); i++) {
             personajetemp.add((Personaje) arreglo_personajes.get(i));
@@ -225,17 +258,28 @@ public class recreacion extends JPanel {
                                 personaje = new EnanoDecorator(personaje);
                                 break;
                         }
+                        //Se usa aumentoPorPocima para evaluar si aumentar escudo o vida por medio de Cadena de responsailidad
+                        aumentoPorPocima.operacion(personajetemp.get(i).getVida(), personajetemp.get(i).getEscudo(), personajetemp.get(i));
                     }
                     entra = false;
                     colisionPocima = true;
                 }
             }
+            g2d.setFont(fuenteVida);//Fuente del porcentaje de vida
+            g2d.setColor(Color.RED);//Color de la vida
+            g2d.drawString(String.valueOf(personajetemp.get(i).getVida()) + "%", incx , incy - 30 + y);//Pinta el porcentaje de vida que tiene
+            g2d.setFont(fuenteEscudo);//Fuente del porcentaje de escudo
+            g2d.setColor(Color.BLUE);//Color del escudo
+            g2d.drawString(String.valueOf(personajetemp.get(i).getEscudo()) + "%" , incx , incy - 40 + y);//Pinta el porcentaje de escudo que tiene
             y = y + aumentoSpriteY;
         }
+        personajetemp.clear();
         repaint();
     }
 
     public static void inicia() {
+        
+        
         arreglo_personajes.clear();
         personajetemp.clear();
         switch (eleccion) {

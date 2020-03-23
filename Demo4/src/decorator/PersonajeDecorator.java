@@ -159,4 +159,12 @@ public abstract class PersonajeDecorator extends Personaje{
     public int getIncxAbajoUno() {
         return getPersonaje().getIncxAbajoUno();
     }
+    
+    public int getVida(){
+        return getPersonaje().getVida();
+    }
+    
+    public int getEscudo(){
+        return getPersonaje().getEscudo();
+    }
 }

@@ -1,48 +1,49 @@
 package animacion;
 //CONCRETE BUILDER
-public class HumanoBuilder extends PersonajeBuilder{
 
-    public HumanoBuilder() {
+public class ElfoBuilder extends PersonajeBuilder{
+
+    public ElfoBuilder() {
     }
 
     @Override
     public void arriba() {
-        personaje.setArriba("/assets/sprites_humano/Humano_arriba.png");
+        personaje.setArriba("/assets/sprites_elfo/Elfo_arriba.png");
     }
 
     @Override
     public void abajo() {
-        personaje.setAbajo("/assets/sprites_humano/Humano_abajo.png");
+        personaje.setAbajo("/assets/sprites_elfo/Elfo_abajo.png");
     }
 
     @Override
     public void derecha() {
-        personaje.setDerecha("/assets/sprites_humano/Humano_derecha.png");
+        personaje.setDerecha("/assets/sprites_elfo/Elfo_derecha.png");
     }
 
     @Override
     public void izquierda() {
-        personaje.setIzquierda("/assets/sprites_humano/Humano_izquierda.png");
+        personaje.setIzquierda("/assets/sprites_elfo/Elfo_izquierda.png");
     }
 
     @Override
     public void atacaArriba() {
-        personaje.setAtacaArriba("/assets/sprites_humano/Humano_ataca_arriba.png");
+        personaje.setAtacaArriba("/assets/sprites_elfo/Elfo_ataca_arriba.png");
     }
 
     @Override
     public void atacaAbajo() {
-        personaje.setAtacaAbajo("/assets/sprites_humano/Humano_ataca_abajo.png");
+        personaje.setAtacaAbajo("/assets/sprites_elfo/Elfo_ataca_abajo.png");
     }
 
     @Override
     public void atacaDerecha() {
-        personaje.setAtacaDerecha("/assets/sprites_humano/Humano_ataca_derecha.png");
+        personaje.setAtacaDerecha("/assets/sprites_elfo/Elfo_ataca_derecha.png");
     }
 
     @Override
     public void atacaIzquierda() {
-        personaje.setAtacaIzquierda("/assets/sprites_humano/Humano_ataca_izquierda.png");
+        personaje.setAtacaIzquierda("/assets/sprites_elfo/Elfo_ataca_izquierda.png");
     }
 
     @Override
@@ -62,12 +63,12 @@ public class HumanoBuilder extends PersonajeBuilder{
 
     @Override
     public void spriteAtacaArribaX() {
-        personaje.setSpriteAtacaArribaX(112);
+        personaje.setSpriteAtacaArribaX(64);
     }
 
     @Override
     public void spriteAtacaArribaY() {
-        personaje.setSpriteAtacaArribaY(80);
+        personaje.setSpriteAtacaArribaY(52);
     }
 
     @Override
@@ -77,17 +78,17 @@ public class HumanoBuilder extends PersonajeBuilder{
 
     @Override
     public void spriteAtacaAbajoX() {
-        personaje.setSpriteAtacaAbajoX(112);
+        personaje.setSpriteAtacaAbajoX(64);
     }
 
     @Override
     public void spriteAtacaAbajoY() {
-        personaje.setSpriteAtacaAbajoY(80);
+        personaje.setSpriteAtacaAbajoY(52);
     }
 
     @Override
     public void spriteAtacaIzquierdaX() {
-        personaje.setSpriteAtacaIzquierdaX(128);
+        personaje.setSpriteAtacaIzquierdaX(64);
     }
 
     @Override
@@ -97,7 +98,7 @@ public class HumanoBuilder extends PersonajeBuilder{
 
     @Override
     public void spriteAtacaDerechaX() {
-        personaje.setSpriteAtacaDerechaX(128);
+        personaje.setSpriteAtacaDerechaX(64);
     }
 
     @Override
@@ -107,17 +108,17 @@ public class HumanoBuilder extends PersonajeBuilder{
 
     @Override
     public void incxArribaUno() {
-        personaje.setIncxArribaUno(50);
+        personaje.setIncxArribaUno(25);
     }
 
     @Override
     public void incyArribaUno() {
-        personaje.setIncyArribaUno(55);
+        personaje.setIncyArribaUno(25);
     }
 
     @Override
     public void incxArribaDos() {
-        personaje.setIncxArribaDos(90);
+        personaje.setIncxArribaDos(50);
     }
 
     @Override
@@ -127,37 +128,37 @@ public class HumanoBuilder extends PersonajeBuilder{
 
     @Override
     public void incxAbajoUno() {
-        personaje.setIncxAbajoUno(50);
+        personaje.setIncxAbajoUno(25);
     }
 
     @Override
     public void incyAbajoUno() {
-        personaje.setIncyAbajoUno(35);
+        personaje.setIncyAbajoUno(25);
     }
 
     @Override
     public void incxAbajoDos() {
-        personaje.setIncxAbajoDos(90);
+        personaje.setIncxAbajoDos(50);
     }
 
     @Override
     public void incyAbajoDos() {
-        personaje.setIncyAbajoDos(70);
+        personaje.setIncyAbajoDos(50);
     }
 
     @Override
     public void incxDerechaUno() {
-        personaje.setIncxDerechaUno(24);
+        personaje.setIncxDerechaUno(25);
     }
 
     @Override
     public void incyDerechaUno() {
-        personaje.setIncyDerechaUno(23);
+        personaje.setIncyDerechaUno(25);
     }
 
     @Override
     public void incxDerechaDos() {
-        personaje.setIncxDerechaDos(145);
+        personaje.setIncxDerechaDos(50);
     }
 
     @Override
@@ -167,17 +168,17 @@ public class HumanoBuilder extends PersonajeBuilder{
 
     @Override
     public void incxIzquierdaUno() {
-        personaje.setIncxIzquierdaUno(115);
+        personaje.setIncxIzquierdaUno(25);
     }
 
     @Override
     public void incyIzquierdaUno() {
-        personaje.setIncyIzquierdaUno(23);
+        personaje.setIncyIzquierdaUno(25);
     }
 
     @Override
     public void incxIzquierdaDos() {
-        personaje.setIncxIzquierdaDos(54);
+        personaje.setIncxIzquierdaDos(50);
     }
 
     @Override
@@ -185,4 +186,15 @@ public class HumanoBuilder extends PersonajeBuilder{
         personaje.setIncyIzquierdaDos(50);
     }
 
+    @Override
+    public void vida() {
+        personaje.setVida(100);
+    }
+
+    @Override
+    public void escudo() {
+        personaje.setEscudo(0);
+    }
+    
+   
 }

@@ -41,6 +41,8 @@ public class Animacion {
         personajeBuilder.incyIzquierdaUno();
         personajeBuilder.incxIzquierdaDos();
         personajeBuilder.incyIzquierdaDos();
+        personajeBuilder.vida();
+        personajeBuilder.escudo();
     }
     
     

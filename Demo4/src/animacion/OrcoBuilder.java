@@ -1,48 +1,48 @@
 package animacion;
 //CONCRETE BUILDER
-public class EnanoBuilder extends PersonajeBuilder{
+public class OrcoBuilder extends PersonajeBuilder{
 
-    public EnanoBuilder() {
+    public OrcoBuilder() {
     }
 
     @Override
     public void arriba() {
-        personaje.setArriba("/assets/sprites_enano/Enano_arriba.png");
+        personaje.setArriba("/assets/sprites_orco/Orco_arriba.png");
     }
-    
+
     @Override
     public void abajo() {
-        personaje.setAbajo("/assets/sprites_enano/Enano_abajo.png");
+        personaje.setAbajo("/assets/sprites_orco/Orco_abajo.png");
     }
 
     @Override
     public void derecha() {
-        personaje.setDerecha("/assets/sprites_enano/Enano_derecha.png");
+        personaje.setDerecha("/assets/sprites_orco/Orco_derecha.png");
     }
 
     @Override
     public void izquierda() {
-        personaje.setIzquierda("/assets/sprites_enano/Enano_izquierda.png");
+        personaje.setIzquierda("/assets/sprites_orco/Orco_izquierda.png");
     }
 
     @Override
     public void atacaArriba() {
-        personaje.setAtacaArriba("/assets/sprites_enano/Enano_ataca_arriba.png");
+        personaje.setAtacaArriba("/assets/sprites_orco/Orco_ataca_arriba.png");
     }
 
     @Override
     public void atacaAbajo() {
-        personaje.setAtacaAbajo("/assets/sprites_enano/Enano_ataca_abajo.png");
+        personaje.setAtacaAbajo("/assets/sprites_orco/Orco_ataca_abajo.png");
     }
 
     @Override
     public void atacaDerecha() {
-        personaje.setAtacaDerecha("/assets/sprites_enano/Enano_ataca_derecha.png");
+        personaje.setAtacaDerecha("/assets/sprites_orco/Orco_ataca_derecha.png");
     }
 
     @Override
     public void atacaIzquierda() {
-        personaje.setAtacaIzquierda("/assets/sprites_enano/Enano_ataca_izquierda.png");
+        personaje.setAtacaIzquierda("/assets/sprites_orco/Orco_ataca_izquierda.png");
     }
 
     @Override
@@ -62,12 +62,12 @@ public class EnanoBuilder extends PersonajeBuilder{
 
     @Override
     public void spriteAtacaArribaX() {
-        personaje.setSpriteAtacaArribaX(64);
+        personaje.setSpriteAtacaArribaX(112);
     }
 
     @Override
     public void spriteAtacaArribaY() {
-        personaje.setSpriteAtacaArribaY(52);
+        personaje.setSpriteAtacaArribaY(112);
     }
 
     @Override
@@ -77,17 +77,17 @@ public class EnanoBuilder extends PersonajeBuilder{
 
     @Override
     public void spriteAtacaAbajoX() {
-        personaje.setSpriteAtacaAbajoX(64);
+        personaje.setSpriteAtacaAbajoX(112);
     }
 
     @Override
     public void spriteAtacaAbajoY() {
-        personaje.setSpriteAtacaAbajoY(52);
+        personaje.setSpriteAtacaAbajoY(112);
     }
 
     @Override
     public void spriteAtacaIzquierdaX() {
-        personaje.setSpriteAtacaIzquierdaX(64);
+        personaje.setSpriteAtacaIzquierdaX(112);
     }
 
     @Override
@@ -97,7 +97,7 @@ public class EnanoBuilder extends PersonajeBuilder{
 
     @Override
     public void spriteAtacaDerechaX() {
-        personaje.setSpriteAtacaDerechaX(64);
+        personaje.setSpriteAtacaDerechaX(112);
     }
 
     @Override
@@ -107,17 +107,17 @@ public class EnanoBuilder extends PersonajeBuilder{
 
     @Override
     public void incxArribaUno() {
-        personaje.setIncxArribaUno(10);
+        personaje.setIncxArribaUno(75);
     }
 
     @Override
     public void incyArribaUno() {
-        personaje.setIncyArribaUno(25);
+        personaje.setIncyArribaUno(105);
     }
 
     @Override
     public void incxArribaDos() {
-        personaje.setIncxArribaDos(62);
+        personaje.setIncxArribaDos(70);
     }
 
     @Override
@@ -127,27 +127,27 @@ public class EnanoBuilder extends PersonajeBuilder{
 
     @Override
     public void incxAbajoUno() {
-        personaje.setIncxAbajoUno(10);
+        personaje.setIncxAbajoUno(45);
     }
 
     @Override
     public void incyAbajoUno() {
-        personaje.setIncyAbajoUno(25);
+        personaje.setIncyAbajoUno(40);
     }
 
     @Override
     public void incxAbajoDos() {
-        personaje.setIncxAbajoDos(62);
+        personaje.setIncxAbajoDos(85);
     }
 
     @Override
     public void incyAbajoDos() {
-        personaje.setIncyAbajoDos(50);
+        personaje.setIncyAbajoDos(120);
     }
 
     @Override
     public void incxDerechaUno() {
-        personaje.setIncxDerechaUno(10);
+        personaje.setIncxDerechaUno(40);
     }
 
     @Override
@@ -157,7 +157,7 @@ public class EnanoBuilder extends PersonajeBuilder{
 
     @Override
     public void incxDerechaDos() {
-        personaje.setIncxDerechaDos(62);
+        personaje.setIncxDerechaDos(90);
     }
 
     @Override
@@ -177,12 +177,22 @@ public class EnanoBuilder extends PersonajeBuilder{
 
     @Override
     public void incxIzquierdaDos() {
-        personaje.setIncxIzquierdaDos(32);
+        personaje.setIncxIzquierdaDos(90);
     }
 
     @Override
     public void incyIzquierdaDos() {
         personaje.setIncyIzquierdaDos(50);
+    }
+
+    @Override
+    public void vida() {
+        personaje.setVida(100);
+    }
+
+    @Override
+    public void escudo() {
+        personaje.setEscudo(0);
     }
 
 }
