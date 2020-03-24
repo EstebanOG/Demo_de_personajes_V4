@@ -195,6 +195,11 @@ public class ElfoBuilder extends PersonajeBuilder{
     public void escudo() {
         personaje.setEscudo(0);
     }
+
+    @Override
+    public void daño() {
+        personaje.setDaño(50);
+    }
     
    
 }

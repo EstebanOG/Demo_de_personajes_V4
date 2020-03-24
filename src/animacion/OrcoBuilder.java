@@ -195,4 +195,8 @@ public class OrcoBuilder extends PersonajeBuilder{
         personaje.setEscudo(0);
     }
 
+    @Override
+    public void daño() {
+        personaje.setDaño(50);
+    }
 }

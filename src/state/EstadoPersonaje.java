@@ -7,13 +7,15 @@ public class EstadoPersonaje {
     private Personaje personaje;
     private Estado estadoPersonaje;
 
-    public void setEstadoPersonaje(Estado estadoPersonaje) {
-        this.estadoPersonaje = estadoPersonaje;
-//        this.personaje = personaje;
+    public void setPersonaje(Personaje personaje) {
+        this.personaje = personaje;
     }
 
+    public void setEstadoPersonaje(Estado estadoPersonaje) {
+        this.estadoPersonaje = estadoPersonaje;
+    }
     
     public void verificarEstado(){
-        estadoPersonaje.verificarEstado();
+        estadoPersonaje.verificarEstado(personaje);
     }
 }

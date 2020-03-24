@@ -42,8 +42,17 @@ public class Personaje implements ClonPersonaje{
     private int incyIzquierdaDos;
     private int vida;
     private int escudo;
+    private int daño;
 
     public Personaje() {
+    }
+
+    public int getDaño() {
+        return daño;
+    }
+
+    public void setDaño(int daño) {
+        this.daño = daño;
     }
 
     public int getVida() {

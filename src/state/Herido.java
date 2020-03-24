@@ -1,10 +1,12 @@
 package state;
 
+import animacion.Personaje;
+
 public class Herido implements Estado{
 
     @Override
-    public void verificarEstado() {
-        System.out.println("Estado Herido");
+    public void verificarEstado(Personaje personaje) {
+        personaje.setDaño(80);
     }
     
 }

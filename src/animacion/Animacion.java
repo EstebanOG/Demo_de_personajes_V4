@@ -43,6 +43,7 @@ public class Animacion {
         personajeBuilder.incyIzquierdaDos();
         personajeBuilder.vida();
         personajeBuilder.escudo();
+        personajeBuilder.daño();
     }
     
     

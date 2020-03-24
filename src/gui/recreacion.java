@@ -185,6 +185,7 @@ public class recreacion extends JPanel {
                                 /*Se utiliza Strategy para evaluar la vida que se le baja a ambos personajes*/
                                 /*Si está decorado se le baja 20 de vida al clonar*/
                                 /*Si está normal se le baja 40 de vida al clonar*/
+                                /*Con la variable entra se evalua si cogio la pocima o no*/
                                 if (entra == true) {
                                     clonarVida = new StrategyNormal(personajetemp.get(i));
                                     clonarVida.vidaEscudo();
@@ -223,8 +224,12 @@ public class recreacion extends JPanel {
         }
         for (i = 0; i < arreglo_personajes.size(); i++) {
             personajetemp.add((Personaje) arreglo_personajes.get(i));
-            personajetemp.get(i).setVida(50);
-            /*Se verifica el estado del personaje*/
+            /*Se verifica el estado del personaje y cambia su daño así:
+            Vigoroso(70 puntos de vida o más): Daño 50
+            Herido(Más de 20 y menos de 70 puntos de vida): Daño 80
+            Moribundo(20 puntos de vida o menos): Daño 100
+            */
+            estadoPersonaje.setPersonaje(personajetemp.get(i));
             if(personajetemp.get(i).getVida()>70){
                 estadoPersonaje.setEstadoPersonaje(personajeVigoroso);
             }else if(personajetemp.get(i).getVida()>20){
@@ -326,6 +331,7 @@ public class recreacion extends JPanel {
             arreglo_personajes.add(personajeClonUno);
             arreglo_personajes.add(personajeClonDos);
         }
+        personaje.setVida(50);
         new recreacion().setVisible(true);
     }
 }

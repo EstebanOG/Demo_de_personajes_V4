@@ -195,4 +195,9 @@ public class HumanoBuilder extends PersonajeBuilder{
         personaje.setEscudo(0);
     }
 
+    @Override
+    public void daño() {
+        personaje.setDaño(50);
+    }
+
 }

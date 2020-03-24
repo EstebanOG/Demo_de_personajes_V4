@@ -49,4 +49,5 @@ public abstract class PersonajeBuilder{
     public abstract void incyIzquierdaDos();
     public abstract void vida();
     public abstract void escudo();
+    public abstract void daño();
 }
