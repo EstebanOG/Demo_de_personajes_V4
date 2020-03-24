@@ -361,4 +361,7 @@ public class Personaje implements ClonPersonaje{
         return personaje;
     }
 
+    public void verificarEstado() {
+    }
+
 }

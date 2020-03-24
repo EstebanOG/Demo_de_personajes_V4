@@ -19,6 +19,10 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import state.EstadoPersonaje;
+import state.Herido;
+import state.Moribundo;
+import state.Vigoroso;
 import strategy.StrategyNormal;
 import strategy.StrategyDecorado;
 import strategy.Strategy;
@@ -28,6 +32,12 @@ public class recreacion extends JPanel {
     static Personaje personaje;
     public Verificar aumentoPorPocima = new Verificar();//Se crea un objeto de la clase Verificar la cual se encuentra ChainOfResponsability
     Strategy clonarVida; // Objeto de la clase Strategy
+    /*Se definen los objetos de las clases que se encargan de verificar el estado del personaje*/
+    EstadoPersonaje estadoPersonaje = new EstadoPersonaje();
+    Herido personajeHerido = new Herido();
+    Moribundo personajeMoribundo = new Moribundo();
+    Vigoroso personajeVigoroso = new Vigoroso();
+    /*******************************************************************************************/
     JFrame ventana = new JFrame();
     Font fuenteVida = new Font("Calibri", 3, 16);// Fuente vida
     Font fuenteEscudo = new Font("Calibri", 3, 16);// Fuente escudo
@@ -213,6 +223,17 @@ public class recreacion extends JPanel {
         }
         for (i = 0; i < arreglo_personajes.size(); i++) {
             personajetemp.add((Personaje) arreglo_personajes.get(i));
+            personajetemp.get(i).setVida(50);
+            /*Se verifica el estado del personaje*/
+            if(personajetemp.get(i).getVida()>70){
+                estadoPersonaje.setEstadoPersonaje(personajeVigoroso);
+            }else if(personajetemp.get(i).getVida()>20){
+                estadoPersonaje.setEstadoPersonaje(personajeHerido);
+            }else{
+                estadoPersonaje.setEstadoPersonaje(personajeMoribundo);
+            }
+            estadoPersonaje.verificarEstado();
+            /*************************************/
             if (ataca == true) {
                 switch (posicion[0]) {
                     case "arriba":
