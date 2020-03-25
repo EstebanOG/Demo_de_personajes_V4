@@ -284,7 +284,7 @@ public class recreacion extends JPanel {
                                 personaje = new ElfoDecorator(personaje);
                                 break;
                             case "Enano":
-                                //personaje.Notificar();
+                                personaje.Notificar();
                                 personaje = new EnanoDecorator(personaje);
                                 break;
                         }
