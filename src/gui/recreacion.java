@@ -3,6 +3,7 @@ package gui;
 import decorator.HumanoDecorator;
 import animacion.*;
 import chainOfResponsability.Verificar;
+import colisiones.EvaluarColisiones;
 import decorator.ElfoDecorator;
 import decorator.EnanoDecorator;
 import decorator.OrcoDecorator;
@@ -38,6 +39,8 @@ public class recreacion extends JPanel {
     Moribundo personajeMoribundo = new Moribundo();
     Vigoroso personajeVigoroso = new Vigoroso();
     /*******************************************************************************************/
+    EvaluarColisiones evaluarColisiones = new EvaluarColisiones();
+    
     JFrame ventana = new JFrame();
     Font fuenteVida = new Font("Calibri", 3, 16);// Fuente vida
     Font fuenteEscudo = new Font("Calibri", 3, 16);// Fuente escudo
@@ -267,27 +270,11 @@ public class recreacion extends JPanel {
                 myA = (Incremento / personajetemp.get(i).getNumSpritesMov()) * personajetemp.get(i).getSpriteMoverY();
                 g2d.drawImage(img, incx - 25, incy - 25 + y, 50 + incx, y + 50 + incy, mxA, myA, mxA + personajetemp.get(i).getSpriteMoverX(), myA + personajetemp.get(i).getSpriteMoverY(), this);
                 rectPj.setRect(incx-15, incy-30+y, 52, 78);
-                colision = rect.intersects(rectPj);
+                //colision = rect.intersects(rectPj);
+                colision = evaluarColisiones.evaluarColision(rect,rectPj,colision);
                 if (colision == true) {
                     if (entra == true) {
-                        switch (eleccion) {
-                            case "Orco":
-                                personaje.Notificar();
-                                personaje = new OrcoDecorator(personaje);
-                                break;
-                            case "Humano":
-                                personaje.Notificar();
-                                personaje = new HumanoDecorator(personaje);
-                                break;
-                            case "Elfo":
-                                personaje.Notificar();
-                                personaje = new ElfoDecorator(personaje);
-                                break;
-                            case "Enano":
-                                personaje.Notificar();
-                                personaje = new EnanoDecorator(personaje);
-                                break;
-                        }
+                        personaje = evaluarColisiones.personajeDecorado(personaje);
                         //Se usa aumentoPorPocima para evaluar si aumentar escudo o vida por medio de Cadena de responsailidad
                         aumentoPorPocima.operacion(personajetemp.get(i).getVida(), personajetemp.get(i).getEscudo(), personajetemp.get(i));
                     }
@@ -335,7 +322,7 @@ public class recreacion extends JPanel {
             arreglo_personajes.add(personajeClonUno);
             arreglo_personajes.add(personajeClonDos);
         }
-        personaje.setVida(50);
+        //personaje.setVida(50);
         new recreacion().setVisible(true);
     }
 }
