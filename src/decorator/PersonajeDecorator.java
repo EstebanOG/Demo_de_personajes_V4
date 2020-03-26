@@ -7,7 +7,7 @@ public abstract class PersonajeDecorator extends Personaje{
     private Personaje personaje;
     private Subject subject;
 
-    public PersonajeDecorator(Personaje personaje) {
+    public PersonajeDecorator(Personaje personaje()) {
         this.personaje = personaje();
         
     }

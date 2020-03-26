@@ -340,7 +340,7 @@ public class recreacion extends JPanel {
         arreglo_personajes.add(personaje);
         if (poblacion.equals("Población")) {
             Personaje personajeClonUno = (Personaje) personaje.clonar();
-            new ObserverA(personajeClonUno);
+            
             Personaje personajeClonDos = (Personaje) personaje.clonar();
             arreglo_personajes.add(personajeClonUno);
             arreglo_personajes.add(personajeClonDos);

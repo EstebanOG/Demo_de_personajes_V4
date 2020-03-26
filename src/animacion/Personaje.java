@@ -373,7 +373,8 @@ public class Personaje implements ClonPersonaje, Observer{
         return personaje;
     }
       public void Update(){
-          System.out.println("ok");
+          subject.setState(getVida());
+          subject.notifyObservers();
       }  
     
 
