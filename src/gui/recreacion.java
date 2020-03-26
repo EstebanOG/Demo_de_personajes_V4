@@ -26,11 +26,14 @@ import state.Vigoroso;
 import strategy.StrategyNormal;
 import strategy.StrategyDecorado;
 import strategy.Strategy;
+import observer.*;
 
 public class recreacion extends JPanel {
 
     static Personaje personaje;
     public Verificar aumentoPorPocima = new Verificar();//Se crea un objeto de la clase Verificar la cual se encuentra ChainOfResponsability
+    
+    //.aadd(new personaje);
     Strategy clonarVida; // Objeto de la clase Strategy
     /*Se definen los objetos de las clases que se encargan de verificar el estado del personaje*/
     EstadoPersonaje estadoPersonaje = new EstadoPersonaje();
@@ -270,21 +273,22 @@ public class recreacion extends JPanel {
                 colision = rect.intersects(rectPj);
                 if (colision == true) {
                     if (entra == true) {
+                        //Pocima a = new Pocima();
                         switch (eleccion) {
                             case "Orco":
-                                personaje.Notificar();
+                               
                                 personaje = new OrcoDecorator(personaje);
                                 break;
                             case "Humano":
-                                personaje.Notificar();
+                               
                                 personaje = new HumanoDecorator(personaje);
                                 break;
                             case "Elfo":
-                                personaje.Notificar();
+                                
                                 personaje = new ElfoDecorator(personaje);
                                 break;
                             case "Enano":
-                                personaje.Notificar();
+                                
                                 personaje = new EnanoDecorator(personaje);
                                 break;
                         }
@@ -331,6 +335,7 @@ public class recreacion extends JPanel {
         arreglo_personajes.add(personaje);
         if (poblacion.equals("Población")) {
             Personaje personajeClonUno = (Personaje) personaje.clonar();
+            new ObserverA(personajeClonUno);
             Personaje personajeClonDos = (Personaje) personaje.clonar();
             arreglo_personajes.add(personajeClonUno);
             arreglo_personajes.add(personajeClonDos);

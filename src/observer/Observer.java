@@ -3,17 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Observador;
+package observer;
 
 /**
  *
  * @author Juan
  */
-public class Observable {
- 
- 
-  public void addObserver(Observer a){
-      
-  }
-  
+public interface Observer {
+    public void Update();
 }
