@@ -24,6 +24,7 @@ import strategy.StrategyNormal;
 import strategy.StrategyDecorado;
 import strategy.Strategy;
 import observer.*;
+import decorator.*;
 
 public class recreacion extends JPanel {
 
@@ -273,7 +274,7 @@ public class recreacion extends JPanel {
                 colision = evaluarColisiones.evaluarColision(rect,rectPj,colision);
                 if (colision == true) {
                     if (entra == true) {
-<<<<<<< HEAD
+
                         //Pocima a = new Pocima();
                         switch (eleccion) {
                             case "Orco":
@@ -293,9 +294,9 @@ public class recreacion extends JPanel {
                                 personaje = new EnanoDecorator(personaje);
                                 break;
                         }
-=======
+
                         personaje = evaluarColisiones.personajeDecorado(personaje);
->>>>>>> 61eb71beee913170f34a0634e41c49617d377930
+
                         //Se usa aumentoPorPocima para evaluar si aumentar escudo o vida por medio de Cadena de responsailidad
                         aumentoPorPocima.operacion(personajetemp.get(i).getVida(), personajetemp.get(i).getEscudo(), personajetemp.get(i));
                     }
