@@ -1,11 +1,8 @@
 package gui;
 
-import decorator.HumanoDecorator;
 import animacion.*;
 import chainOfResponsability.Verificar;
-import decorator.ElfoDecorator;
-import decorator.EnanoDecorator;
-import decorator.OrcoDecorator;
+import colisiones.EvaluarColisiones;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -41,6 +38,8 @@ public class recreacion extends JPanel {
     Moribundo personajeMoribundo = new Moribundo();
     Vigoroso personajeVigoroso = new Vigoroso();
     /*******************************************************************************************/
+    EvaluarColisiones evaluarColisiones = new EvaluarColisiones();
+    
     JFrame ventana = new JFrame();
     Font fuenteVida = new Font("Calibri", 3, 16);// Fuente vida
     Font fuenteEscudo = new Font("Calibri", 3, 16);// Fuente escudo
@@ -270,9 +269,11 @@ public class recreacion extends JPanel {
                 myA = (Incremento / personajetemp.get(i).getNumSpritesMov()) * personajetemp.get(i).getSpriteMoverY();
                 g2d.drawImage(img, incx - 25, incy - 25 + y, 50 + incx, y + 50 + incy, mxA, myA, mxA + personajetemp.get(i).getSpriteMoverX(), myA + personajetemp.get(i).getSpriteMoverY(), this);
                 rectPj.setRect(incx-15, incy-30+y, 52, 78);
-                colision = rect.intersects(rectPj);
+                /*Se evalua la colision de cada personaje mediante la clase EvaluarColisiones y si es el caso se decora el personaje*/
+                colision = evaluarColisiones.evaluarColision(rect,rectPj,colision);
                 if (colision == true) {
                     if (entra == true) {
+<<<<<<< HEAD
                         //Pocima a = new Pocima();
                         switch (eleccion) {
                             case "Orco":
@@ -292,12 +293,16 @@ public class recreacion extends JPanel {
                                 personaje = new EnanoDecorator(personaje);
                                 break;
                         }
+=======
+                        personaje = evaluarColisiones.personajeDecorado(personaje);
+>>>>>>> 61eb71beee913170f34a0634e41c49617d377930
                         //Se usa aumentoPorPocima para evaluar si aumentar escudo o vida por medio de Cadena de responsailidad
                         aumentoPorPocima.operacion(personajetemp.get(i).getVida(), personajetemp.get(i).getEscudo(), personajetemp.get(i));
                     }
                     entra = false;
                     colisionPocima = true;
                 }
+                
             }
             g2d.setFont(fuenteVida);//Fuente del porcentaje de vida
             g2d.setColor(Color.RED);//Color de la vida
@@ -340,7 +345,7 @@ public class recreacion extends JPanel {
             arreglo_personajes.add(personajeClonUno);
             arreglo_personajes.add(personajeClonDos);
         }
-        personaje.setVida(50);
+        //personaje.setVida(50);
         new recreacion().setVisible(true);
     }
 }
