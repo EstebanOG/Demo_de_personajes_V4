@@ -2,7 +2,7 @@ package animacion;
 //CLASE PRODUCTO
 
 import prototype.ClonPersonaje;
-import observer.*;
+import Observador.Observer;
 
 public class Personaje implements ClonPersonaje, Observer{
     private String arriba = "";
@@ -44,10 +44,8 @@ public class Personaje implements ClonPersonaje, Observer{
     private int vida;
     private int escudo;
     private int daño;
-    private Subject subject;
-    public Personaje(Subject subject) {
-        this.subject = subject;
-        this.subject.add(this);
+
+    public Personaje() {
     }
 
     public int getDaño() {
@@ -372,10 +370,13 @@ public class Personaje implements ClonPersonaje, Observer{
         }
         return personaje;
     }
-      public void Update(){
-          subject.setState(getVida());
-          subject.notifyObservers();
-      }  
-    
+
+    public void verificarEstado() {
+    }
+    public void Notificar(){//ejecuta el cambio de escudo al tomar la pocima e instanciar clon decorado
+        setEscudo(50);        
+       
+        
+    }
 
 }

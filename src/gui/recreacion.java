@@ -23,15 +23,11 @@ import state.Vigoroso;
 import strategy.StrategyNormal;
 import strategy.StrategyDecorado;
 import strategy.Strategy;
-import observer.*;
-import decorator.*;
 
 public class recreacion extends JPanel {
 
     static Personaje personaje;
     public Verificar aumentoPorPocima = new Verificar();//Se crea un objeto de la clase Verificar la cual se encuentra ChainOfResponsability
-    
-    //.aadd(new personaje);
     Strategy clonarVida; // Objeto de la clase Strategy
     /*Se definen los objetos de las clases que se encargan de verificar el estado del personaje*/
     EstadoPersonaje estadoPersonaje = new EstadoPersonaje();
@@ -274,29 +270,7 @@ public class recreacion extends JPanel {
                 colision = evaluarColisiones.evaluarColision(rect,rectPj,colision);
                 if (colision == true) {
                     if (entra == true) {
-
-                        //Pocima a = new Pocima();
-                        switch (eleccion) {
-                            case "Orco":
-                               
-                                personaje = new OrcoDecorator(personaje);
-                                break;
-                            case "Humano":
-                               
-                                personaje = new HumanoDecorator(personaje);
-                                break;
-                            case "Elfo":
-                                
-                                personaje = new ElfoDecorator(personaje);
-                                break;
-                            case "Enano":
-                                
-                                personaje = new EnanoDecorator(personaje);
-                                break;
-                        }
-
                         personaje = evaluarColisiones.personajeDecorado(personaje);
-
                         //Se usa aumentoPorPocima para evaluar si aumentar escudo o vida por medio de Cadena de responsailidad
                         aumentoPorPocima.operacion(personajetemp.get(i).getVida(), personajetemp.get(i).getEscudo(), personajetemp.get(i));
                     }
@@ -341,7 +315,6 @@ public class recreacion extends JPanel {
         arreglo_personajes.add(personaje);
         if (poblacion.equals("Población")) {
             Personaje personajeClonUno = (Personaje) personaje.clonar();
-            
             Personaje personajeClonDos = (Personaje) personaje.clonar();
             arreglo_personajes.add(personajeClonUno);
             arreglo_personajes.add(personajeClonDos);

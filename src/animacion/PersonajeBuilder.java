@@ -1,15 +1,14 @@
 package animacion;
 //ABSTRACT BUILDER
-import observer.*;
-public abstract class PersonajeBuilder implements Observer{
+public abstract class PersonajeBuilder{
     protected Personaje personaje;
-    private Subject subject;
+    
     public Personaje getPersonaje(){
         return personaje;
     }
     
     public void crearNuevoPersonaje(){
-        personaje = new Personaje(subject);
+        personaje = new Personaje();
     }
     
     public abstract void arriba();
@@ -51,7 +50,4 @@ public abstract class PersonajeBuilder implements Observer{
     public abstract void vida();
     public abstract void escudo();
     public abstract void daño();
-    public void Update(){
-        System.out.println("ok");
-    }
 }
