@@ -7,6 +7,7 @@ import decorator.HumanoDecorator;
 import decorator.OrcoDecorator;
 import static gui.recreacion.eleccion;
 import java.awt.Rectangle;
+import observer.AlarmaColisionPocima;
 
 public class EvaluarColisiones {
     public Rectangle rect;
@@ -17,8 +18,12 @@ public class EvaluarColisiones {
     public EvaluarColisiones() {
     }
 
-    public boolean evaluarColision(Rectangle rect, Rectangle rectPj, boolean colision){
+    public boolean evaluarColisionPocima(Rectangle rect, Rectangle rectPj, boolean colision){
         colision = rect.intersects(rectPj);
+        if(colision == true){
+            AlarmaColisionPocima a = new AlarmaColisionPocima();
+            a.notifyObserver();
+        }
         return colision;
     }
     
