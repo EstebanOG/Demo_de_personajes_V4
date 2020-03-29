@@ -2,11 +2,6 @@ package animacion;
 //CLASE PRODUCTO
 
 import prototype.ClonPersonaje;
-<<<<<<< HEAD
-import observer.*;
-import java.util.ArrayList;
-=======
->>>>>>> 462937d6e67695eafc9e7b4cc7a13a6bea1d912a
 
 public class Personaje implements ClonPersonaje{
     private String arriba = "";
@@ -48,8 +43,6 @@ public class Personaje implements ClonPersonaje{
     private int vida;
     private int escudo;
     private int daño;
-    private int notificacion;
-    private Subject subject;
 
     public Personaje() {
     }
@@ -379,9 +372,4 @@ public class Personaje implements ClonPersonaje{
 
     public void verificarEstado() {
     }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 462937d6e67695eafc9e7b4cc7a13a6bea1d912a
 }

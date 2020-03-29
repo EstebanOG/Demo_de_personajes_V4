@@ -14,8 +14,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import observer.AlarmaColisionPocima;
@@ -29,7 +27,7 @@ import strategy.StrategyDecorado;
 import strategy.Strategy;
 
 public class recreacion extends JPanel {
-    //static Canon canon;
+
     static Personaje personaje;
     public Verificar aumentoPorPocima = new Verificar();//Se crea un objeto de la clase Verificar la cual se encuentra ChainOfResponsability
     Strategy clonarVida; // Objeto de la clase Strategy
@@ -38,30 +36,25 @@ public class recreacion extends JPanel {
     Herido personajeHerido = new Herido();
     Moribundo personajeMoribundo = new Moribundo();
     Vigoroso personajeVigoroso = new Vigoroso();
-    
     /*******************************************************************************************/
     EvaluarColisiones evaluarColisiones = new EvaluarColisiones();
     Pocima pocima = new Pocima();
     JFrame ventana = new JFrame();
     Font fuenteVida = new Font("Calibri", 3, 16);// Fuente vida
     Font fuenteEscudo = new Font("Calibri", 3, 16);// Fuente escudo
-    static ArrayList<Canon> canonList = new ArrayList<>();
     static ArrayList<Personaje> personajetemp = new ArrayList<>();
     static ArrayList<Object> arreglo_personajes = new ArrayList<>();
-    private final int AnchoVentana = 800;
-    private final int AltoVentana = 600;
+    private final int AnchoVentana = 900;
+    private final int AltoVentana = 700;
     Thread hilo;
     boolean inicio = false;
     BufferedImage bi;
-    Image img, fondo, pocion, can;
+    Image img, fondo, pocion;
     Toolkit h = Toolkit.getDefaultToolkit();
     Graphics2D g2d;
     int Incremento = 0;
     int incx = 340;
     int incy = 230;
-    static int mx=(1/4)*93;
-    static int my=(1/4)*93;
-    int incremento = 0;
     boolean arriba = true;
     boolean abajo = true;
     boolean izquierda = true;
@@ -75,23 +68,14 @@ public class recreacion extends JPanel {
     int i = 0;
     boolean colision = false;
     boolean colisionPocima = false;
-    Rectangle rect = new Rectangle(403, 423, 30, 20);
+    Rectangle rect = new Rectangle(700, 500, 30, 20);
     Rectangle rectPj = new Rectangle(340, 230, 52, 80);
-    private static int posY;
-    private static int posX;
 
     boolean entra = true;
 
     public recreacion() {
-
         fondo = h.getImage(this.getClass().getResource("/assets/map.png"));
-<<<<<<< HEAD
-        pocion = h.getImage(this.getClass().getResource("/assets/Pocion2.png"));
-        can = h.getImage(this.getClass().getResource("/assets/Canon_der.png"));
-=======
-        //pocion = h.getImage(this.getClass().getResource("/assets/Pocion2.png"));
         pocion = h.getImage(this.getClass().getResource(pocima.getImagen()));
->>>>>>> 462937d6e67695eafc9e7b4cc7a13a6bea1d912a
         ventana.setSize(AnchoVentana, AltoVentana);
         ventana.setResizable(false);
         ventana.setLocationRelativeTo(null);
@@ -230,38 +214,8 @@ public class recreacion extends JPanel {
         int aumentoSpriteY;
         g2d = bi.createGraphics();
         g2d.drawImage(fondo, 0, 0, AnchoVentana, AltoVentana, this);
-<<<<<<< HEAD
-//        mx = 23;
-//        my = 0;
-//        for (int j = 0; j < canonList.size(); j++) {
-//            if(j<=3){
-//                can = h.getImage(this.getClass().getResource("/assets/Canon_izq.png"));
-//            }
-            can = h.getImage(this.getClass().getResource("/assets/Canon_izq.png"));
-            g2d.drawImage(can, canonList.get(0).getPosX(), canonList.get(0).getPosY(), 100, 100, canonList.get(0).getIncX(), canonList.get(0).getIncY(), 23+93, 23+93, this);
-            g2d.drawImage(can, canonList.get(1).getPosX(), canonList.get(1).getPosY(), 100, 100, canonList.get(1).getIncX(), canonList.get(1).getIncY(), 116+93, 93, this);
-//            g2d.drawImage(can, canonList.get(2).getPosX(), canonList.get(2).getPosY(), 100, 100, canonList.get(2).getIncX(), canonList.get(2).getIncY(), mx+93, my+93, this);
-//            g2d.drawImage(can, canonList.get(3).getPosX(), canonList.get(3).getPosY(), 100, 100, canonList.get(3).getIncX(), canonList.get(3).getIncY(), mx+93, my+93, this);
-//            can = h.getImage(this.getClass().getResource("/assets/Canon_der.png"));
-//            g2d.drawImage(can, canonList.get(4).getPosX(), canonList.get(4).getPosY(), 100, 100, canonList.get(4).getIncX(), canonList.get(4).getIncY(), mx+93, my+93, this);
-//            g2d.drawImage(can, canonList.get(5).getPosX(), canonList.get(5).getPosY(), 100, 100, canonList.get(5).getIncX(), canonList.get(5).getIncY(), mx+93, my+93, this);
-//            g2d.drawImage(can, canonList.get(6).getPosX(), canonList.get(6).getPosY(), 100, 100, canonList.get(6).getIncX(), canonList.get(6).getIncY(), mx+93, my+93, this);
-//            
-//            if(j>=3){
-//                can = h.getImage(this.getClass().getResource("/assets/Canon_der.png"));
-//            }
-//        }
-        //incremento++;
-        
- 
-        if(colisionPocima == false){
-            g2d.drawImage(pocion, 390, 400, 60, 60, this);
-        }
-=======
-//        if(colisionPocima == false){
         g2d.drawImage(pocion, pocima.getCoordenadaX(), pocima.getCoordenadaY(), pocima.getAlto(), pocima.getAncho(), this);
-//        }
->>>>>>> 462937d6e67695eafc9e7b4cc7a13a6bea1d912a
+       
         if (1 == arreglo_personajes.size()) {
             aumentoSpriteY = 0;
         } else {
@@ -275,7 +229,7 @@ public class recreacion extends JPanel {
             Moribundo(20 puntos de vida o menos): Daño 100
             */
             estadoPersonaje.setPersonaje(personajetemp.get(i));
-            System.out.println(pocima.getCoordenadaX());
+            //System.out.println(pocima.getCoordenadaX());
             if(personajetemp.get(i).getVida()>70){
                 estadoPersonaje.setEstadoPersonaje(personajeVigoroso);
             }else if(personajetemp.get(i).getVida()>20){
@@ -313,19 +267,18 @@ public class recreacion extends JPanel {
                 myA = (Incremento / personajetemp.get(i).getNumSpritesMov()) * personajetemp.get(i).getSpriteMoverY();
                 g2d.drawImage(img, incx - 25, incy - 25 + y, 50 + incx, y + 50 + incy, mxA, myA, mxA + personajetemp.get(i).getSpriteMoverX(), myA + personajetemp.get(i).getSpriteMoverY(), this);
                 rectPj.setRect(incx-15, incy-30+y, 52, 78);
-                /*Se evalua la colision de cada personaje mediante la clase EvaluarColisiones y si es el caso se decora el personaje*/
-                if(entra==true)
-                    colision = evaluarColisiones.evaluarColisionPocima(rect,rectPj,colision);
+                rect.setRect(pocima.getCoordenadaX()+13, pocima.getCoordenadaY()+23, 30, 20);
+                /*Se evalua la colision de cada personaje mediante la clase EvaluarColisiones
+                y si es el caso se decora el personaje*/
+                colision = evaluarColisiones.evaluarColisionPocima(rect,rectPj,pocima);
                 if (colision == true) {
+                    //Se usa aumentoPorPocima para evaluar si aumentar escudo o vida por medio de Cadena de responsailidad
+                    aumentoPorPocima.operacion(personajetemp.get(i).getVida(), personajetemp.get(i).getEscudo(), personajetemp.get(i));
                     if (entra == true) {
                         personaje = evaluarColisiones.personajeDecorado(personaje);
-                       
-                        //Se usa aumentoPorPocima para evaluar si aumentar escudo o vida por medio de Cadena de responsailidad
-                        aumentoPorPocima.operacion(personajetemp.get(i).getVida(), personajetemp.get(i).getEscudo(), personajetemp.get(i));
-                        
                     }
                     entra = false;
-                    colisionPocima = true;
+                    //colisionPocima = true;
                 }
                 
             }
@@ -338,18 +291,10 @@ public class recreacion extends JPanel {
             y = y + aumentoSpriteY;
         }
         personajetemp.clear();
-        
         repaint();
     }
 
     public static void inicia() {
-<<<<<<< HEAD
-        
-        canonList.clear();
-=======
-        AlarmaColisionPocima a = new AlarmaColisionPocima();
-        a.attach(new Pocima());
->>>>>>> 462937d6e67695eafc9e7b4cc7a13a6bea1d912a
         arreglo_personajes.clear();
         personajetemp.clear();
         switch (eleccion) {
@@ -369,34 +314,13 @@ public class recreacion extends JPanel {
         animar.moverse();
         personaje = animar.getPersonaje();
         arreglo_personajes.add(personaje);
-        posY=0;
-        posX=0;
-        for (int i = 0; i < 8; i++) {
-            canonList.add(new Canon());
-            canonList.get(i).setPosY(posY);
-            canonList.get(i).setPosX(posX);
-            canonList.get(i).setIncX(mx);
-            canonList.get(i).setIncY(my);
-            posY = posY+150;
-            if(i==3){
-                posX=700;
-                posY=0;
-            }
-            
-        }
-//        for (int i = 0; i < 6; i++) {
-//            canonList.get(i).getPosX();
-//            canonList.get(i).getPosY();
-//            System.out.println(canonList.get(i).getPosX() + " " +  canonList.get(i).getPosY());
-//        }
-        System.out.println(canonList.get(2).getPosX());
         if (poblacion.equals("Población")) {
             Personaje personajeClonUno = (Personaje) personaje.clonar();
             Personaje personajeClonDos = (Personaje) personaje.clonar();
             arreglo_personajes.add(personajeClonUno);
             arreglo_personajes.add(personajeClonDos);
         }
-        //personaje.setVida(50);
+        personaje.setVida(0);
         new recreacion().setVisible(true);
     }
 }

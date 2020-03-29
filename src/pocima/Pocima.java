@@ -4,8 +4,9 @@ import observer.colisionPocima;
 
 public class Pocima implements colisionPocima{
     private String imagen = "/assets/Pocion2.png";
-    public int coordenadaX = 390;
-    public int coordenadaY = 400;
+    private int coordenadaX = 700;
+    private int coordenadaY = 500;
+    private int posicion = 1;
     private final int ancho = 60;
     private final int alto = 60;
     public Pocima() {
@@ -16,11 +17,11 @@ public class Pocima implements colisionPocima{
     }
 
     public int getCoordenadaX() {
-        return coordenadaX;
+        return this.coordenadaX;
     }
 
     public int getCoordenadaY() {
-        return coordenadaY;
+        return this.coordenadaY;
     }
 
     public int getAncho() {
@@ -31,24 +32,18 @@ public class Pocima implements colisionPocima{
         return alto;
     }
     
-    public void cambioDePosicion(){
-        
-    }
 
     @Override
     public void update() {
-        System.out.println(coordenadaY);
-        if(coordenadaY == 400){
+        if (posicion == 1){
             this.coordenadaY = 100;
             this.coordenadaX = 100;
-            System.out.println("Se cambia la pocision de pocima");
+            this.posicion = 2;
         }else{
-            this.coordenadaY = 390;
-            this.coordenadaX = 400;
-            System.out.println("xd");
-            
-        }
-        
+            this.coordenadaY = 500;
+            this.coordenadaX = 700;
+            this.posicion = 1;
+        }        
     }
     
 }

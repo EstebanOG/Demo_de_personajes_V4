@@ -14,7 +14,6 @@ public abstract class PersonajeDecorator extends Personaje{
     }
     public void setPersonaje(Personaje personaje){
         this.personaje = personaje;
-        
     }
     
     public String getArriba() {

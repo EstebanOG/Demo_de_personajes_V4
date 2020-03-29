@@ -8,6 +8,7 @@ import decorator.OrcoDecorator;
 import static gui.recreacion.eleccion;
 import java.awt.Rectangle;
 import observer.AlarmaColisionPocima;
+import pocima.Pocima;
 
 public class EvaluarColisiones {
     public Rectangle rect;
@@ -18,10 +19,11 @@ public class EvaluarColisiones {
     public EvaluarColisiones() {
     }
 
-    public boolean evaluarColisionPocima(Rectangle rect, Rectangle rectPj, boolean colision){
+    public boolean evaluarColisionPocima(Rectangle rect, Rectangle rectPj,  Pocima pocima){
         colision = rect.intersects(rectPj);
         if(colision == true){
             AlarmaColisionPocima a = new AlarmaColisionPocima();
+            a.attach(pocima);
             a.notifyObserver();
         }
         return colision;
@@ -29,16 +31,16 @@ public class EvaluarColisiones {
     
     public Personaje personajeDecorado(Personaje personaje){
         switch (eleccion) {
-            case "Orco":               
+            case "Orco":
                 personaje = new OrcoDecorator(personaje);
                 break;
             case "Humano":
-                personaje = new HumanoDecorator(personaje);               
+                personaje = new HumanoDecorator(personaje);
                 break;
-            case "Elfo":               
+            case "Elfo":
                 personaje = new ElfoDecorator(personaje);
                 break;
-            case "Enano":               
+            case "Enano":
                 personaje = new EnanoDecorator(personaje);
                 break;
         }
