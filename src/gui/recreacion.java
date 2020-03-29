@@ -16,6 +16,8 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import observer.AlarmaColisionPocima;
+import pocima.Pocima;
 import state.EstadoPersonaje;
 import state.Herido;
 import state.Moribundo;
@@ -36,7 +38,7 @@ public class recreacion extends JPanel {
     Vigoroso personajeVigoroso = new Vigoroso();
     /*******************************************************************************************/
     EvaluarColisiones evaluarColisiones = new EvaluarColisiones();
-    
+    Pocima pocima = new Pocima();
     JFrame ventana = new JFrame();
     Font fuenteVida = new Font("Calibri", 3, 16);// Fuente vida
     Font fuenteEscudo = new Font("Calibri", 3, 16);// Fuente escudo
@@ -74,7 +76,8 @@ public class recreacion extends JPanel {
     public recreacion() {
 
         fondo = h.getImage(this.getClass().getResource("/assets/map.png"));
-        pocion = h.getImage(this.getClass().getResource("/assets/Pocion2.png"));
+        //pocion = h.getImage(this.getClass().getResource("/assets/Pocion2.png"));
+        pocion = h.getImage(this.getClass().getResource(pocima.getImagen()));
         ventana.setSize(AnchoVentana, AltoVentana);
         ventana.setResizable(false);
         ventana.setLocationRelativeTo(null);
@@ -213,9 +216,9 @@ public class recreacion extends JPanel {
         int aumentoSpriteY;
         g2d = bi.createGraphics();
         g2d.drawImage(fondo, 0, 0, AnchoVentana, AltoVentana, this);
-        if(colisionPocima == false){
-            g2d.drawImage(pocion, 390, 400, 60, 60, this);
-        }
+//        if(colisionPocima == false){
+        g2d.drawImage(pocion, pocima.getCoordenadaX(), pocima.getCoordenadaY(), pocima.getAlto(), pocima.getAncho(), this);
+//        }
         if (1 == arreglo_personajes.size()) {
             aumentoSpriteY = 0;
         } else {
@@ -229,6 +232,7 @@ public class recreacion extends JPanel {
             Moribundo(20 puntos de vida o menos): Daño 100
             */
             estadoPersonaje.setPersonaje(personajetemp.get(i));
+            System.out.println(pocima.getCoordenadaX());
             if(personajetemp.get(i).getVida()>70){
                 estadoPersonaje.setEstadoPersonaje(personajeVigoroso);
             }else if(personajetemp.get(i).getVida()>20){
@@ -267,7 +271,8 @@ public class recreacion extends JPanel {
                 g2d.drawImage(img, incx - 25, incy - 25 + y, 50 + incx, y + 50 + incy, mxA, myA, mxA + personajetemp.get(i).getSpriteMoverX(), myA + personajetemp.get(i).getSpriteMoverY(), this);
                 rectPj.setRect(incx-15, incy-30+y, 52, 78);
                 /*Se evalua la colision de cada personaje mediante la clase EvaluarColisiones y si es el caso se decora el personaje*/
-                colision = evaluarColisiones.evaluarColision(rect,rectPj,colision);
+                if(entra==true)
+                    colision = evaluarColisiones.evaluarColisionPocima(rect,rectPj,colision);
                 if (colision == true) {
                     if (entra == true) {
                         personaje = evaluarColisiones.personajeDecorado(personaje);
@@ -292,8 +297,8 @@ public class recreacion extends JPanel {
     }
 
     public static void inicia() {
-        
-        
+        AlarmaColisionPocima a = new AlarmaColisionPocima();
+        a.attach(new Pocima());
         arreglo_personajes.clear();
         personajetemp.clear();
         switch (eleccion) {

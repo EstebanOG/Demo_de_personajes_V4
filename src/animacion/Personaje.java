@@ -2,9 +2,8 @@ package animacion;
 //CLASE PRODUCTO
 
 import prototype.ClonPersonaje;
-import Observador.Observer;
 
-public class Personaje implements ClonPersonaje, Observer{
+public class Personaje implements ClonPersonaje{
     private String arriba = "";
     private String abajo = "";
     private String izquierda = "";
@@ -373,10 +372,4 @@ public class Personaje implements ClonPersonaje, Observer{
 
     public void verificarEstado() {
     }
-    public void Notificar(){//ejecuta el cambio de escudo al tomar la pocima e instanciar clon decorado
-        setEscudo(50);        
-       
-        
-    }
-
 }
