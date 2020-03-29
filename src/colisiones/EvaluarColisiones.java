@@ -24,16 +24,16 @@ public class EvaluarColisiones {
     
     public Personaje personajeDecorado(Personaje personaje){
         switch (eleccion) {
-            case "Orco":
+            case "Orco":               
                 personaje = new OrcoDecorator(personaje);
                 break;
             case "Humano":
-                personaje = new HumanoDecorator(personaje);
+                personaje = new HumanoDecorator(personaje);               
                 break;
-            case "Elfo":
+            case "Elfo":               
                 personaje = new ElfoDecorator(personaje);
                 break;
-            case "Enano":
+            case "Enano":               
                 personaje = new EnanoDecorator(personaje);
                 break;
         }

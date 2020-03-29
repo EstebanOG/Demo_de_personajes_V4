@@ -2,9 +2,10 @@ package animacion;
 //CLASE PRODUCTO
 
 import prototype.ClonPersonaje;
-import Observador.Observer;
+import observer.*;
+import java.util.ArrayList;
 
-public class Personaje implements ClonPersonaje, Observer{
+public class Personaje implements ClonPersonaje{
     private String arriba = "";
     private String abajo = "";
     private String izquierda = "";
@@ -44,6 +45,8 @@ public class Personaje implements ClonPersonaje, Observer{
     private int vida;
     private int escudo;
     private int daño;
+    private int notificacion;
+    private Subject subject;
 
     public Personaje() {
     }
@@ -373,10 +376,6 @@ public class Personaje implements ClonPersonaje, Observer{
 
     public void verificarEstado() {
     }
-    public void Notificar(){//ejecuta el cambio de escudo al tomar la pocima e instanciar clon decorado
-        setEscudo(50);        
-       
-        
-    }
+
 
 }
